@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connectDB = async () => {
+export async function connectDB() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Conectado ao banco!');
@@ -11,6 +11,4 @@ const connectDB = async () => {
     console.error('Erro ao conectar ao banco:', error.message);
     process.exit(1);
   }
-};
-
-export default connectDB;
+}
