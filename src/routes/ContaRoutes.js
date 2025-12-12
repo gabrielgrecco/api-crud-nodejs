@@ -99,7 +99,8 @@ router.patch("/:numeroConta/saque", async (req, res) => {
   try {
     const conta = await Conta.findOne({ numeroConta: req.params.numeroConta });
 
-    if (!conta) return res.status(404).json({ erro: "Conta não encontrada" });
+    if (!conta) 
+      return res.status(404).json({ erro: "Conta não encontrada" });
 
     if (conta.saldo < valor) {
       return res.status(400).json({ erro: "Saldo insuficiente" });
