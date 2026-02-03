@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  login,
   criarConta,
   listarContas,
   consultarConta,
@@ -11,6 +12,7 @@ import {
 
 const router = Router();
 
+router.post("/login", login);
 router.post("/", criarConta);
 router.get("/", listarContas);
 router.get("/:numeroConta", consultarConta);

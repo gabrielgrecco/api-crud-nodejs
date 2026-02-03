@@ -1,5 +1,18 @@
 import { Request, Response } from "express";
 import Conta from "../models/Conta";
+import jsonwebtoken from "jsonwebtoken";
+import { expressjwt } from "express-jwt";
+
+const secret = 'teste-jwt'
+const jwtMiddleWare = expressjwt({secret, algorithms: ['HS256']})
+
+export const login = async (req: Request, res: Response) => {
+  const { username, password } = req.body;
+  if (username == 'teste' && password == 'teste') {
+    const token = jsonwebtoken.sign({username}, secret, { expiresIn: '1h'});
+    return res.json({token})
+  }
+}
 
 export const criarConta = async (req: Request, res: Response) => {
   const { numeroConta } = req.body;
